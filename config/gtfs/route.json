@@ -3,9 +3,76 @@
     "use_route_short_name_for_route_id": true,
     "route_id_cleanup_regex": "^zenbus:Line:|:LOC$",
     "default_route_long_name_enabled": true,
+    "route_long_name_cleaners": [
+        {
+            "regex": "^circuit \\d+ - ",
+            "ignore_case": true
+        }
+    ],
     "direction_splitter_enabled": true,
     "direction_finder_enabled": true,
+    "direction_headsign_cleaners": [
+        {
+            "regex": "^.*\\s+>\\s+",
+            "ignore_case": true,
+            "comment": "remove before >"
+        }
+    ],
     "trip_headsign_remove_via": true,
+    "trip_headsign_cleaners": [
+        {
+            "regex": "arret\\s*(\\d+)\\s*",
+            "ignore_case": true,
+            "comment": "remove arret and stop code from trip headsign"
+        },
+        {
+            "regex": "c[e|é]gep regional lanaudiere - terrebonne",
+            "ignore_case": true,
+            "replacement": "Cégep Terrebonne"
+        },
+        {
+            "regex": "gare intermodale - 280 rue latour",
+            "ignore_case": true,
+            "replacement": "Gare St-Jérôme"
+        },
+        {
+            "regex": "cegep",
+            "ignore_case": true,
+            "is_word": true,
+            "replacement": "Cégep"
+        }
+    ],
     "use_stop_id_hash_code": true,
     "stop_id_cleanup_regex": "^zenbus:(StopPoint:SP|StopArea:SA):|:LOC$",
+    "use_stop_name_for_stop_code": true,
+    "stop_code_cleaners": [
+        {
+            "regex": "^arret\\s*(\\d+)\\s*(.*)$",
+            "ignore_case": true,
+            "replacement": "$1"
+        },
+        {
+            "regex": "^(?!\\d+$).+$",
+            "ignore_case": true,
+            "comment": "remove all non-digit characters"
+        }
+    ],
+    "stop_name_cleaners": [
+        {
+            "regex": "^arret\\s*(\\d+)\\s*",
+            "ignore_case": true,
+            "comment": "remove stop code from stop name"
+        },
+        {
+            "regex": "\\s+direction\\s+(.*)$",
+            "ignore_case": true,
+            "replacement": " (-> $1)"
+        },
+        {
+            "regex": "cegep",
+            "ignore_case": true,
+            "is_word": true,
+            "replacement": "Cégep"
+        }
+    ]
 }

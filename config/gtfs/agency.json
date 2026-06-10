@@ -1,5 +1,5 @@
 {
-    "agency_id_cleanup_regex": "^MRC\\+de\\s+",
+    "agency_id_cleanup_regex": "^MRC\\s+de\\s+",
     "target_route_type_id": 3,
     "default_color": "284D45",
     "default_color_comment": "GREEN (from web-site CSS)",
